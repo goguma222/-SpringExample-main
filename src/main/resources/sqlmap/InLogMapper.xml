@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.devhouse.example2.log.LogMapper">
+
+    <!--
+        # 주석다는 법은 HTML과 동일함.
+        # SQL Query Console : CRUD -> 쿼리로 명령 -> 이 쿼리는 xml 에 적혀있다고 했고, 이걸 mybatis 가 db 가져가고,
+        결과를 받아오는 거다.
+        # mapper 자체에도 CRUD 가 필요하겠네 ? -> 쿼리 동일함.
+        # Query = 길어지면, 가독성 최악이 되요, 보통 어떤 형식으로 쓰냐면
+
+        SELECT 컬럼명
+        FROM 테이블
+        WHERE 조건절
+        ORDER BY
+     -->
+
+    <!-- id = 매칭되는 자바 파일의 인터페이스의 가상함수 이름과 동일. -->
+    <!-- resultType : 이 타입으로 데이터를 전달 해줘, SELECT => 데이터가 하나면 resultType으로 반환하고,
+        데이터가 여러개면 List<데이터타입> 으로 반환해요.
+
+        Map => 키/벨류 형태로 되어있는 JSON 같은 아이임. ( 아이폰 = 딕셔너리 )
+    -->
+    <select id="getLogList" resultType="java.util.HashMap">
+        SELECT * FROM inLog
+        WHERE type = 'T'
+        LIMIT 10
+    </select>
+</mapper>
+
+<!--
+     # 스터디 기록
+     - 공부하시는 레포지토리, 커밋은 작은 단위로 여러번. 적당히 작게.
+     - github에 소스 관리하시면 되고,
+     - 미디움, 브런치, 티스토리 무언가가 있음, 깃허브 블로그, 브이로그
+—>
